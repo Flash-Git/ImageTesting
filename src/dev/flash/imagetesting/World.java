@@ -17,7 +17,8 @@ public class World {
 
 	public PixelManager pixelManager;
 
-	private LineGenerator lineGenerator;
+
+	private ArrayList<LineGenerator> lineGenerators;
 
 	public World(Handler handler, int width, int height) {
 		this.handler = handler;
@@ -27,11 +28,21 @@ public class World {
 
 	public void init() {
 		pixelManager = new PixelManager(handler);
-		lineGenerator = new LineGenerator(handler, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, 35);
+		lineGenerators = new ArrayList<>();
+		lineGenerators.add(new LineGenerator(handler, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, 5));
+		lineGenerators.add(new LineGenerator(handler, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, 10));
+		lineGenerators.add(new LineGenerator(handler, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, 15));
+		lineGenerators.add(new LineGenerator(handler, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, 20));
 	}
 
 	public void tick(double delta) {
-		lineGenerator.tick(delta);
+		lineGenerators.removeIf(generator -> generator.isDone());
+		if(lineGenerators.size()<5){
+			lineGenerators.add(new LineGenerator(handler, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, new Random().nextInt(100)));
+		}
+		for(LineGenerator generator : lineGenerators) {
+			generator.tick(delta);
+		}
 		pixelManager.tick(delta);
 	}
 

@@ -38,7 +38,6 @@ public class PixelManager {
 	public boolean add(int x, int y) {
 		for(Pixel p : all) {
 			if(p.getX() == x && p.getY() == y) {
-				System.out.println("reee");
 				toRemove.add(p);
 			}
 		}

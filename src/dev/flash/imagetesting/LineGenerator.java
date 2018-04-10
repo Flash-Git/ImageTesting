@@ -16,9 +16,9 @@ public class LineGenerator {
 
 	private int x1, y1, x2, y2, genRate;
 
-	private boolean done = false;
+	private boolean done;
 
-	private ArrayList<int[]> nodes = new ArrayList<>();//better name?
+	private ArrayList<int[]> nodes;//better name?
 
 	private Timer timer;
 
@@ -28,13 +28,10 @@ public class LineGenerator {
 		this.y1 = y1;
 		this.x2 = x2;
 		this.y2 = y2;
-		System.out.println("x1: " + x1 + " x2: " + x2 + " y1: " + y1 + " y2: " + y2);
+		done = false;
+		nodes = new ArrayList<>();//better name?
 		timer = new Timer(genRate);
-		if(! generate()) {
-			done = true;
-		}
-		sort();
-		System.out.println("nodes length: " + nodes.size());
+		generate();
 	}
 
 	private void sort() {
@@ -44,7 +41,7 @@ public class LineGenerator {
 		boolean half = false;
 		for(int[] node : nodes) {
 			if(node == middle) {
-				half=true;
+				half = true;
 				continue;
 			}
 			if(! half) {
@@ -56,7 +53,7 @@ public class LineGenerator {
 		Collections.reverse(half1);
 
 		nodes.clear();
-		for(int i = half2.size()-1; i > -1; i--) {
+		for(int i = half2.size() - 1; i > - 1; i--) {
 			nodes.add(half1.get(i));
 			nodes.add(half2.get(i));
 		}
@@ -90,9 +87,8 @@ public class LineGenerator {
 		int[] start = {x, y};
 		nodes.add(start);
 		for(int i = 0; i < 100; i++) {
-			System.out.println("x: " + x);
-			System.out.println("y: " + y);
 			if(x == x2 && y == y2) {
+				sort();
 				return true;
 			}
 			if(line.intersects(x + facingX, y, 32, 32)) {
@@ -106,14 +102,15 @@ public class LineGenerator {
 				nodes.add(point);
 				continue;
 			} else {
+				sort();
 				return true;
 			}
 		}
+		done = true;
 		return false;
 	}
 
 	private void next() {
-		//System.out.println("ouchy");
 		if(nodes.size() == 0) {
 			done = true;
 			return;
