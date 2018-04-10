@@ -74,13 +74,13 @@ public class LineGenerator {
 
 		//Normalising
 		if(facingX != 0) {
-			facingX = facingX * 32 / Math.abs(facingX);
+			facingX = facingX * World.PIXEL_SIZE / Math.abs(facingX);
 		}
 
 		if(facingY != 0) {
-			facingY = facingY * 32 / Math.abs(facingY);
+			facingY = facingY * World.PIXEL_SIZE / Math.abs(facingY);
 		}
-		Line2D.Double line = new Line2D.Double(x1 + 16, y1 + 16, x2 + 16, y2 + 16);
+		Line2D.Double line = new Line2D.Double(x1 + World.PIXEL_SIZE / 2, y1 + World.PIXEL_SIZE / 2, x2 + World.PIXEL_SIZE / 2, y2 + World.PIXEL_SIZE / 2);
 		int x = x1;
 		int y = y1;
 
@@ -91,12 +91,12 @@ public class LineGenerator {
 				sort();
 				return true;
 			}
-			if(line.intersects(x + facingX, y, 32, 32)) {
+			if(line.intersects(x + facingX, y, World.PIXEL_SIZE, World.PIXEL_SIZE)) {
 				x = x + facingX;
 				int[] point = {x, y};
 				nodes.add(point);
 				continue;
-			} else if(line.intersects(x, y + facingY, 32, 32)) {
+			} else if(line.intersects(x, y + facingY, World.PIXEL_SIZE, World.PIXEL_SIZE)) {
 				y += facingY;
 				int[] point = {x, y};
 				nodes.add(point);

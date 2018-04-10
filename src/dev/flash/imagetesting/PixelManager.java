@@ -30,7 +30,7 @@ public class PixelManager {
 				toRemove.add(p);
 			}
 		}
-		all.add(new Pixel(x, y, new Color(new Random().nextInt(25) + 30, new Random().nextInt(25) + 30, new Random().nextInt(25) + 30)));
+		all.add(new Pixel(x, y, new Color(new Random().nextInt(50) + 150, new Random().nextInt(50) + 150, new Random().nextInt(50) + 150)));
 		all.removeAll(toRemove);
 		return true;
 	}
@@ -41,12 +41,18 @@ public class PixelManager {
 				toRemove.add(p);
 			}
 		}
-		all.add(new Pixel(x, y, new Color(new Random().nextInt(25) + 30, new Random().nextInt(25) + 30, new Random().nextInt(25) + 30)));
+		all.add(new Pixel(x, y, new Color(new Random().nextInt(50) + 150, new Random().nextInt(50) + 150, new Random().nextInt(50) + 150)));
 		all.removeAll(toRemove);
 		return true;
 	}
 
 	public void tick(double delta) {
+		for(Pixel pixel : all) {
+			pixel.fade();
+			if(pixel.isDead()) {
+				toRemove.add(pixel);
+			}
+		}
 	}
 
 	public void render(Graphics g) {
