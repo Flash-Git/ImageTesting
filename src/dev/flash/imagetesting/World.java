@@ -27,7 +27,7 @@ public class World {
 
 	public void init() {
 		pixelManager = new PixelManager(handler);
-		lineGenerator = new LineGenerator(handler, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, 100);
+		lineGenerator = new LineGenerator(handler, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, 35);
 	}
 
 	public void tick(double delta) {

@@ -4,13 +4,14 @@ import java.awt.*;
 import java.awt.geom.Line2D;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Flash on 09/04/2018.
  */
 
 public class LineGenerator {
-	
+
 	private Handler handler;
 
 	private int x1, y1, x2, y2, genRate;
@@ -32,8 +33,37 @@ public class LineGenerator {
 		if(! generate()) {
 			done = true;
 		}
+		sort();
 		System.out.println("nodes length: " + nodes.size());
 	}
+
+	private void sort() {
+		int[] middle = nodes.get(nodes.size() / 2);
+		ArrayList<int[]> half1 = new ArrayList<>();
+		ArrayList<int[]> half2 = new ArrayList<>();
+		boolean half = false;
+		for(int[] node : nodes) {
+			if(node == middle) {
+				half=true;
+				continue;
+			}
+			if(! half) {
+				half1.add(node);
+			} else {
+				half2.add(node);
+			}
+		}
+		Collections.reverse(half1);
+
+		nodes.clear();
+		for(int i = half2.size()-1; i > -1; i--) {
+			nodes.add(half1.get(i));
+			nodes.add(half2.get(i));
+		}
+		nodes.add(middle);
+
+	}
+
 
 	private boolean generate() {
 		//get direction
