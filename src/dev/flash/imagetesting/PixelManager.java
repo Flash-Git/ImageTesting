@@ -32,6 +32,7 @@ public class PixelManager {
 		}
 		all.add(new Pixel(x, y, new Color(new Random().nextInt(50) + 150, new Random().nextInt(50) + 150, new Random().nextInt(50) + 150)));
 		all.removeAll(toRemove);
+		toRemove.clear();
 		return true;
 	}
 
@@ -43,6 +44,7 @@ public class PixelManager {
 		}
 		all.add(new Pixel(x, y, new Color(new Random().nextInt(50) + 150, new Random().nextInt(50) + 150, new Random().nextInt(50) + 150)));
 		all.removeAll(toRemove);
+		toRemove.clear();
 		return true;
 	}
 

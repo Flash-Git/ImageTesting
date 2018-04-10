@@ -35,7 +35,7 @@ public class World {
 	public void tick(double delta) {
 		lineGenerators.removeIf(generator -> generator.isDone());
 		if(lineGenerators.size() < 5) {
-			lineGenerators.add(new LineGenerator(handler, new Random().nextInt(width) / PIXEL_SIZE * PIXEL_SIZE, new Random().nextInt(height) / PIXEL_SIZE * PIXEL_SIZE, new Random().nextInt(width) / PIXEL_SIZE * PIXEL_SIZE, new Random().nextInt(height) / PIXEL_SIZE * PIXEL_SIZE, 10));
+			lineGenerators.add(new LineGenerator(handler, new Random().nextInt(width) / PIXEL_SIZE * PIXEL_SIZE, new Random().nextInt(height) / PIXEL_SIZE * PIXEL_SIZE, new Random().nextInt(width) / PIXEL_SIZE * PIXEL_SIZE, new Random().nextInt(height) / PIXEL_SIZE * PIXEL_SIZE, 5));
 		}
 		for(LineGenerator generator : lineGenerators) {
 			generator.tick(delta);
