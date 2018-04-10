@@ -8,30 +8,30 @@ import java.awt.*;
 
 public class Pixel {
 
-    private int x, y;
+	private int x, y;
 
-    private Color color;
+	private Color color;
 
-    public Pixel(int x, int y, Color color) {
-        this.x = x;
-        this.y = y;
-        this.color = color;
-    }
+	public Pixel(int x, int y, Color color) {
+		this.x = x;
+		this.y = y;
+		this.color = color;
+	}
 
-    public void render(Graphics g) {
-        g.setColor(color);
-        g.fillRect(x*32, y*32, 1*32, 1*32);
-    }
+	public void render(Graphics g) {
+		g.setColor(color);
+		g.fillRect(x, y, 1 * 32, 1 * 32);
+	}
 
-    public int getX() {
-        return x;
-    }
+	public int getX() {
+		return x;
+	}
 
-    public int getY() {
-        return y;
-    }
+	public int getY() {
+		return y;
+	}
 
-    public Color getColor() {
-        return color;
-    }
+	public Color getColor() {
+		return color;
+	}
 }

@@ -11,37 +11,41 @@ import java.util.Random;
 
 public class World {
 
-    private int width, height;//in tiles
+	private int width, height;//in tiles
 
-    private Handler handler;
+	private Handler handler;
 
-    public PixelManager pixelManager;
+	public PixelManager pixelManager;
 
-    public World(Handler handler, int width, int height) {
-        this.handler = handler;
-        this.width = width;
-        this.height = height;
-    }
+	private LineGenerator lineGenerator;
 
-    public void init() {
-    	pixelManager = new PixelManager(handler);
-    }
+	public World(Handler handler, int width, int height) {
+		this.handler = handler;
+		this.width = width;
+		this.height = height;
+	}
 
-    public void tick(double delta) {
-        pixelManager.add();
-    }
+	public void init() {
+		pixelManager = new PixelManager(handler);
+		lineGenerator = new LineGenerator(handler, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, new Random().nextInt(width) / 32 * 32, new Random().nextInt(height) / 32 * 32, 100);
+	}
 
-    public void render(Graphics g) {
-        pixelManager.render(g);
-    }
+	public void tick(double delta) {
+		lineGenerator.tick(delta);
+		pixelManager.tick(delta);
+	}
 
-    //GETTERS AND SETTERS
+	public void render(Graphics g) {
+		pixelManager.render(g);
+	}
 
-    public int getWidth() {
-        return width;
-    }
+	//GETTERS AND SETTERS
 
-    public int getHeight() {
-        return height;
-    }
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
 }
