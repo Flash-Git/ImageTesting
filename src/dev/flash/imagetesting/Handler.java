@@ -5,18 +5,18 @@ package dev.flash.imagetesting;
  */
 
 public class Handler {
-    Instance instance;
+	Instance instance;
 
-    public Handler(Instance instance){
-        this.instance = instance;
-    }
+	public Handler(Instance instance) {
+		this.instance = instance;
+	}
 
-    public int getWorldWidth(){
-        return instance.getWorld().getWidth();
-    }
+	public int getWorldWidth() {
+		return instance.getWorld().getWidth();
+	}
 
-    public int getWorldHeight(){
-        return instance.getWorld().getHeight();
-    }
+	public int getWorldHeight() {
+		return instance.getWorld().getHeight();
+	}
 
 }

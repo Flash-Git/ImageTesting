@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 
 public class LineGenerator {
+	
 	private Handler handler;
 
 	private int x1, y1, x2, y2, genRate;
@@ -26,6 +27,7 @@ public class LineGenerator {
 		this.y1 = y1;
 		this.x2 = x2;
 		this.y2 = y2;
+		System.out.println("x1: " + x1 + " x2: " + x2 + " y1: " + y1 + " y2: " + y2);
 		timer = new Timer(genRate);
 		if(! generate()) {
 			done = true;

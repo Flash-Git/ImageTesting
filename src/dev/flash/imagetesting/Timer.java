@@ -18,6 +18,7 @@ public class Timer {
 	}
 
 	public void tick(double delta) {
+		if(active) {
 			elapsedTime = delta + elapsedTime;
 		}
 	}
@@ -27,8 +28,10 @@ public class Timer {
 	}
 
 	public boolean isDone() {
+		if(active == false) {
 			return false;
 		}
+		if(elapsedTime > delay) {
 			elapsedTime = 0;
 			return true;
 		} else {

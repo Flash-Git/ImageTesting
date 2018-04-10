@@ -5,8 +5,8 @@ package dev.flash.imagetesting;
  */
 
 public class Launcher {
-    public static void main(String[] args) {
-        Instance instance = new Instance("Art", 1280, 800);
-        instance.start();
-    }
+	public static void main(String[] args) {
+		Instance instance = new Instance("Art", 1280, 800);
+		instance.start();
+	}
 }
