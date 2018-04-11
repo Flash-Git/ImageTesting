@@ -5,6 +5,7 @@ import java.awt.geom.Line2D;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 /**
  * Created by Flash on 09/04/2018.
@@ -21,6 +22,9 @@ public class LineGenerator {
 	private ArrayList<int[]> nodes;//better name?
 
 	private Timer timer;
+
+	private int currentColor;
+
 
 	public LineGenerator(Handler handler, int x1, int y1, int x2, int y2, int genRate) {
 		this.handler = handler;
@@ -61,8 +65,8 @@ public class LineGenerator {
 
 	}
 
-
 	private boolean generate() {
+		currentColor = new Random().nextInt(30);
 		//get direction
 		int facingX = x2 - x1;
 		int facingY = y2 - y1;
@@ -115,7 +119,7 @@ public class LineGenerator {
 			done = true;
 			return;
 		}
-		handler.instance.getWorld().pixelManager.add(nodes.get(0)[0], nodes.get(0)[1]);
+		handler.instance.getWorld().pixelManager.add(nodes.get(0)[0], nodes.get(0)[1], currentColor);
 		nodes.remove(0);
 	}
 

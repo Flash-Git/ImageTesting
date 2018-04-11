@@ -30,7 +30,7 @@ public class PixelManager {
 				toRemove.add(p);
 			}
 		}
-		all.add(new Pixel(x, y, new Color(new Random().nextInt(50) + 150, new Random().nextInt(50) + 150, new Random().nextInt(50) + 150)));
+		all.add(new Pixel(x, y, new Color(new Random().nextInt(50) + 50, new Random().nextInt(50) + 50, new Random().nextInt(50) + 150)));
 		all.removeAll(toRemove);
 		toRemove.clear();
 		return true;
@@ -42,11 +42,47 @@ public class PixelManager {
 				toRemove.add(p);
 			}
 		}
-		all.add(new Pixel(x, y, new Color(new Random().nextInt(50) + 150, new Random().nextInt(50) + 150, new Random().nextInt(50) + 150)));
+		all.add(new Pixel(x, y, new Color(new Random().nextInt(50) + 50, new Random().nextInt(50) + 150, new Random().nextInt(50) + 150)));
+
 		all.removeAll(toRemove);
 		toRemove.clear();
 		return true;
 	}
+
+
+	public boolean add(int x, int y, int color) {
+		for(Pixel p : all) {
+			if(p.getX() == x && p.getY() == y) {
+				toRemove.add(p);
+			}
+		}
+		switch(color) {
+			case (0):
+				all.add(new Pixel(x, y, new Color(new Random().nextInt(50) + 50, new Random().nextInt(50) + 150, new Random().nextInt(50) + 150)));
+				break;
+			case (1):
+				all.add(new Pixel(x, y, new Color(new Random().nextInt(50) + 150, new Random().nextInt(50) + 50, new Random().nextInt(50) + 150)));
+				break;
+			case (2):
+				all.add(new Pixel(x, y, new Color(new Random().nextInt(50) + 150, new Random().nextInt(50) + 150, new Random().nextInt(50) + 50)));
+				break;
+			case (3):
+				all.add(new Pixel(x, y, new Color(new Random().nextInt(50) + 150, new Random().nextInt(50) + 50, new Random().nextInt(50) + 50)));
+				break;
+			case (4):
+				all.add(new Pixel(x, y, new Color(new Random().nextInt(50) + 50, new Random().nextInt(50) + 150, new Random().nextInt(50) + 50)));
+				break;
+			case (5):
+				all.add(new Pixel(x, y, new Color(new Random().nextInt(50) + 50, new Random().nextInt(50) + 50, new Random().nextInt(50) + 150)));
+				break;
+			default:
+				break;
+		}
+		all.removeAll(toRemove);
+		toRemove.clear();
+		return true;
+	}
+
 
 	public void tick(double delta) {
 		for(Pixel pixel : all) {
