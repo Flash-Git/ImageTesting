@@ -118,7 +118,7 @@ public class Instance implements Runnable {
 	@Override
 	public void run() {
 		init();
-		int targetFps = 154;
+		int targetFps = 144;
 		double timePerTick = 1000000000 / targetFps;
 		double delta = 0;
 		long now;

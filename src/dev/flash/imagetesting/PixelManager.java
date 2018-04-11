@@ -75,6 +75,10 @@ public class PixelManager {
 			case (5):
 				all.add(new Pixel(x, y, new Color(new Random().nextInt(50) + 50, new Random().nextInt(50) + 50, new Random().nextInt(50) + 150)));
 				break;
+			case (6):
+				all.add(new Pixel(x, y, new Color(new Random().nextInt(10) + 150, new Random().nextInt(10) + 150, new Random().nextInt(10) + 150)));
+				break;
+
 			default:
 				break;
 		}
